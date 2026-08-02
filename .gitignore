@@ -1,0 +1,23 @@
+# Virtual Environment
+.venv/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# ML models
+*.pkl
+
+# Temporary files
+*.log
