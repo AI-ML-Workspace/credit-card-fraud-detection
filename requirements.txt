@@ -1,0 +1,21 @@
+# Core Data Science & ML
+numpy
+pandas
+scikit-learn
+imbalanced-learn
+
+# Visualization
+matplotlib
+seaborn
+
+# Web App
+streamlit
+
+# Advanced ML Models
+xgboost
+lightgbm
+
+# Development & Notebooks
+jupyter
+ipykernel
+pytest
