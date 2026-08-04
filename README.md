@@ -12,6 +12,14 @@ This repository provides a step-by-step, reproducible machine learning workflow�
 
 ---
 
+## 📊 Dataset
+
+This project uses the **Credit Card Fraud Detection** dataset, which contains anonymized credit card transactions made by European cardholders. The dataset is highly imbalanced, with fraudulent transactions representing a very small percentage of all records.
+
+Target Variable:
+- **Class = 0** → Legitimate Transaction
+- **Class = 1** → Fraudulent Transaction
+
 ## 📁 Repository Structure
 
 ```text
@@ -34,8 +42,10 @@ credit-card-fraud-detection/
 │   ├── 5_model_evaluation.ipynb
 │   ├── 6_hyperparameter_tuning.ipynb
 │   └── 7_final_model_preparation.ipynb
-├── requirements.txt               # Project dependencies
-└── README.md                      # Project documentation
+├── src/                           # Application source code (under development)
+├── requirements.txt
+├── .gitignore
+└── README.md
 ```
 
 ---
@@ -68,7 +78,7 @@ The project follows a structured 7-stage workflow across dedicated Jupyter Noteb
 
 ### 5. Model Evaluation (`5_model_evaluation.ipynb`)
 - Evaluated models using comprehensive metrics: **Accuracy, Precision, Recall, F1 Score, and ROC-AUC**.
-- Selected **Random Forest Classifier** as the best-performing architecture for fraud detection.
+- Selected Random Forest Classifier based on the highest overall F1 Score and ROC-AUC performance on the test dataset.
 
 ### 6. Hyperparameter Tuning (`6_hyperparameter_tuning.ipynb`)
 - Tuned the winning Random Forest model using `GridSearchCV` across parameters:
@@ -99,7 +109,7 @@ The project follows a structured 7-stage workflow across dedicated Jupyter Noteb
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/<your-username>/credit-card-fraud-detection.git
+   git clone https://github.com/AI-ML-Workspace/credit-card-fraud-detection
    cd credit-card-fraud-detection
    ```
 
