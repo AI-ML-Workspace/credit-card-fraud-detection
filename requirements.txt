@@ -15,6 +15,9 @@ streamlit
 xgboost
 lightgbm
 
+# Explainability
+shap
+
 # Development & Notebooks
 jupyter
 ipykernel
