@@ -21,7 +21,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent  # project root
 
 DATA_DIR = BASE_DIR / "data"
-RAW_DATA_PATH = DATA_DIR / "creditcard.csv"
+RAW_DATA_PATH = (DATA_DIR / "raw" / "creditcard.csv") if (DATA_DIR / "raw" / "creditcard.csv").exists() else (DATA_DIR / "creditcard.csv")
 PROCESSED_DATA_DIR = DATA_DIR / "processed"
 TRAIN_DATA_PATH = PROCESSED_DATA_DIR / "train.csv"
 TEST_DATA_PATH = PROCESSED_DATA_DIR / "test.csv"
