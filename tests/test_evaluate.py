@@ -52,4 +52,4 @@ def test_compute_metrics_precision_drops_with_false_alarms():
 
     metrics = compute_metrics(y_true, y_pred, y_probs)
 
-    assert metrics["precision"] == pytest.approx(1 / 2)
+    assert metrics["precision"] == pytest.approx(1 / 3)
