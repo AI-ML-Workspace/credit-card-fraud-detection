@@ -77,8 +77,13 @@ def plot_global_summary(sample_size: int = 500, save_path=config.SHAP_SUMMARY_PA
     explainer = get_explainer(model, X_test)
     shap_values = explainer.shap_values(sample) if hasattr(explainer, "shap_values") else explainer(sample)
 
-    # For binary classifiers, TreeExplainer may return a list [class0, class1]
-    values_for_fraud_class = shap_values[1] if isinstance(shap_values, list) else shap_values
+    # For binary classifiers, TreeExplainer may return a list [class0, class1] or ndarray (N, M, 2)
+    if isinstance(shap_values, list):
+        values_for_fraud_class = shap_values[1]
+    elif isinstance(shap_values, np.ndarray) and shap_values.ndim == 3:
+        values_for_fraud_class = shap_values[:, :, 1]
+    else:
+        values_for_fraud_class = shap_values
 
     plt.figure()
     shap.summary_plot(values_for_fraud_class, sample, show=False)
@@ -102,7 +107,14 @@ def explain_single_prediction(transaction_row: pd.DataFrame) -> pd.DataFrame:
     shap_values = explainer.shap_values(transaction_row) if hasattr(explainer, "shap_values") \
         else explainer(transaction_row)
 
-    values = shap_values[1][0] if isinstance(shap_values, list) else np.array(shap_values)[0]
+    if isinstance(shap_values, list):
+        values = shap_values[1][0]
+    elif isinstance(shap_values, np.ndarray) and shap_values.ndim == 3:
+        values = shap_values[0, :, 1]
+    elif isinstance(shap_values, np.ndarray) and shap_values.ndim == 2:
+        values = shap_values[0]
+    else:
+        values = np.array(shap_values).squeeze()
 
     contrib = pd.DataFrame({
         "feature": transaction_row.columns,
